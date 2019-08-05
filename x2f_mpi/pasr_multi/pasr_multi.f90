@@ -95,7 +95,8 @@ real(kind(1.e0)) :: ci_rinfo(20), rinfo(50), dpt(3), patm, pr_atm, press, tres, 
                     cdtmix, tend, anstep, dt, t, tmean, tmax, etola, op_inc, &
                     anres, stomby, o2_mean, h2o_mean, co_mean
 logical          :: exist, rstr            
-integer :: dmi_out,dmi_in,status1       	
+! lzg integer :: dmi_out,dmi_in,status1
+integer :: dmi_out,dmi_in,status1(mpi_status_size)       	
 
 !default parameters for premixed CH4 combustion
 data tres, tmix, tpair    / 1.e-2, 1.0e-3, 1.0e-3 / 
@@ -272,7 +273,9 @@ print *, 'streams in', iproc, 'initialized...'
   end if
   !call set_nufm_fac( iproc, nufm_fac )
 
-  if ( rstr==.false. ) then
+  ! lzg if ( rstr==.false. ) then
+   if ( rstr .eqv. .false. ) then
+
      do lpasr = 1, nl_pasr
         gpasr = gpasr + 1
         call pasr_init( n, ncomp, nstr, gpasr, pasr(lpasr) )
@@ -287,7 +290,8 @@ print *, 'streams in', iproc, 'initialized...'
 	       pasr(lpasr)%f(i,1:ncomp)   = pasr(lpasr)%fin(1:ncomp,init_stream)
 	    end do
      end do
-  elseif ( rstr==.true. ) then
+   !lzg elseif ( rstr==.true. ) then
+   elseif ( rstr .eqv. .true. ) then
      do j = 0, nproc-1
       if (j==iproc) then
        do lpasr = 1, nl_pasr

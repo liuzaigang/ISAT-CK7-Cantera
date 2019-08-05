@@ -58,7 +58,7 @@ install-programs:
 	@ls $(DESTDIR)/bin
 	@echo -e "\n"
 
-clean: clean-programs
+clean: dist-clean #clean-programs
 
 dist-clean: clean-libs clean-programs
 

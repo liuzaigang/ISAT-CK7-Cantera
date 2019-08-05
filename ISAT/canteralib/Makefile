@@ -5,7 +5,7 @@ include ../build-files/vars.mk
 
 ISATAB_PATH=../isatab_ser
 
-IFLAGS = -I$(ISATAB_PATH) -I$(CANTERA_INCPATH) -I$(CANTERA_SRC)
+IFLAGS = -I$(ISATAB_PATH) -I$(CANTERA_INCPATH) -I$(CANTERA_SRC) -I$(BOOST_ROOT) # lzg:boost
 
 LIB_NAME = libct
 

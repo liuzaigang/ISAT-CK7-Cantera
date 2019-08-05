@@ -6,7 +6,8 @@ include ../build-files/vars.mk
 IFLAGS = -I../x2f_mpi/
 X2F_LIBS_PATH = ../lib/
 ISAT_LIBS_PATH = ../../ISAT/lib/
-LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -L$(TACC_MKL_LIB) -Xlinker --start-group -lx2f_mpi $(MKL_LIBS) -Xlinker --end-group
+#lzg LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -L$(TACC_MKL_LIB) -Xlinker --start-group -lx2f_mpi $(MKL_LIBS) -Xlinker --end-group
+LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -L$(TACC_MKL_LIB) -Xlinker -lx2f_mpi $(MKL_LIBS)
 
 NAME = test_sort_tools
 

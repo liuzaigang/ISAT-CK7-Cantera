@@ -6,14 +6,14 @@
 # -> Kraken:   module load PrgEnv-intel
 # Ranger use 'mpif90' wrapper; and on Kraken use 'ftn'
 
-CC = icc
-FC = ifort
+CC = mpicc
+FC = mpifort
 ifeq ($(shell which mpif90 &> /dev/null; echo $$?), 0)
-        FC = mpif90
+        FC = mpifort #lzg mpif90
 	LINK_SYS_LIBS = -Bdynamic
 endif
 ifeq ($(shell which ftn &> /dev/null; echo $$?), 0)
-        FC = ftn
+        FC = mpifort #lzg ftn
 	LINK_SYS_LIBS = -Bstatic
 endif
 
@@ -27,16 +27,18 @@ LINK_LIBS = -Bstatic
 ISAT_MODS_PATH = ../../ISAT/isatab_mpi
 
 # set mkl libraries for linking
-MKL_LIBS = -mkl
+MKL_LIBS = #-mkl lzg
 #MKL_LIBS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lguide
 
 # set debug/optimize modes
 ifeq ($(BUILD_TYPE), debug)
 	FCFLAGS = -fp-stack-check -traceback -g -debug all -debug-parameters all -fPIC -vec-report0 -DDEBUG -D_DEBUG -I$(ISAT_MODS_PATH)
 else
-	FCFLAGS = -O2 -fPIC -vec-report0 -I$(ISAT_MODS_PATH)
+	#lzg FCFLAGS = -O2 -fPIC -vec-report0 -I$(ISAT_MODS_PATH)
+	FCFLAGS = -O2 -fPIC -ffree-line-length-none -I$(ISAT_MODS_PATH)
 endif
-CCFLAGS = -O2 -fPIC -vec-report0 -w
+# lzg CCFLAGS = -O2 -fPIC -vec-report0 -w
+CCFLAGS = -O2 -fPIC -w
 
 LN = ln -s
 CP = cp

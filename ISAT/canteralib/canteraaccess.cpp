@@ -38,7 +38,8 @@ extern "C" {
             doublereal c[15];
             doublereal minTemp, maxTemp, refPressure;
             int nsp = _fph(n)->nSpecies();
-            SpeciesThermo& sp = _fph(n)->speciesThermo();
+            //lzg : SpeciesThermo& sp = _fph(n)->speciesThermo();
+            MultiSpeciesThermo& sp = _fph(n)->speciesThermo();
 
             for (k = 0; k < nsp; k++) {
                 // get the NASA coefficients in array c

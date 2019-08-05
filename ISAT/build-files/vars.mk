@@ -6,18 +6,20 @@
 # -> Kraken: module load PrgEnv-intel
 # Ranger use 'mpif90' wrapper; and on Kraken use 'ftn'
 
-FC = mpif90
+FC = mpifort #by lzg.
 LINK_SYS_LIBS = -Bdynamic
-CPP = g++
+CPP = mpicxx
 
 #ifeq ($(shell which mpif90 &> /dev/null; echo $$?), 0)
 #        FC = f95
 #        LINK_SYS_LIBS = -Bdynamic
 #endif
 
+#by lzg. 
 CANTERA_LIBPATH=/usr/local/lib
 CANTERA_INCPATH=/usr/local/include/cantera
-CANTERA_SRC=/home/kalle/work/cantera/src # Needed for Cabinet.h
+#CANTERA_SRC= /home/kalle/work/cantera/src # Needed for Cabinet.h
+CANTERA_SRC= /mnt/c/Users/liuza/Documents/win10ubuntu/cantera/src # Needed for Cabinet.h
 
 CPPFLAGS= -O3 -fPIC
 
@@ -30,7 +32,8 @@ endif
 
 #  -ftree-vectorizer-verbose=1
 
-LINK_LIBS = -Bdynamic -L/usr/local/lib -lcantera_fortran -lcantera -lpthread -lstdc++
+#lzg. LINK_LIBS = -Bdynamic -L/usr/local/lib -lcantera_fortran -lcantera -lpthread -lstdc++
+LINK_LIBS = -Bdynamic -L/usr/lib -lcantera_fortran -lcantera # -lpthread -lstdc++
 
 # for Intel 11.1 with MKL 10.2, linking to MKL requires just one option:
 
@@ -52,3 +55,7 @@ AR = ar crs
 OBJ = o
 MAKE=make BUILD_TYPE=$(BUILD_TYPE)
 CREATE_LIBS = $(LIB_NAME).a $(LIB_NAME).so
+
+
+# Boost lzg
+BOOST_ROOT = /mnt/c/Users/liuza/Documents/win10ubuntu/boost_1_69_0

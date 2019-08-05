@@ -6,7 +6,7 @@ include ../build-files/vars.mk
 ISATAB_PATH=../../ISAT/isatab_ser
 ISATCK_PATH=../../ISAT/isat-ck
 
-IFLAGS = -I$(ISATCK_PATH) -I$(ISATAB_PATH) -I$(CANTERA_INCPATH) -I$(CANTERA_SRC)
+IFLAGS = -I$(ISATCK_PATH) -I$(ISATAB_PATH) -I$(CANTERA_INCPATH) #lzg.-I$(CANTERA_SRC)
 
 LIB_NAME = libck_ext
 

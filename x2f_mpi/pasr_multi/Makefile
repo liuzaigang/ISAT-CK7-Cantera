@@ -6,7 +6,8 @@ include ../build-files/vars.mk
 X2F_LIBS_PATH = ../lib/
 ISAT_LIBS_PATH = ../../ISAT/lib/
 
-LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -Xlinker --start-group -lisat7_mpi -lx2f_mpi -lx2f_mpi_isat $(MKL_LIBS)  -Xlinker --end-group
+#lzg LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -Xlinker --start-group -lisat7_mpi -lx2f_mpi -lx2f_mpi_isat $(MKL_LIBS)  -Xlinker --end-group
+LDFLAGS= -L$(X2F_LIBS_PATH) -L$(ISAT_LIBS_PATH) -Xlinker -lisat7_mpi -lx2f_mpi -lx2f_mpi_isat $(MKL_LIBS)
 
 NAME = pasr_multi
 

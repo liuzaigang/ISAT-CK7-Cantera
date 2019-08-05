@@ -1943,7 +1943,8 @@ subroutine isat_leaf_usrfgh
 	  r_wrk(1:nnx)         = table%xscale(1:nnx)
 	  r_wrk(nxp1:jfe)     = table%fscale(1:nnf)
 	  r_wrk(jfe+1)        = leaf%etolsq
-	  r_wrk(jfe+2:jfe+12) = leaf%props(1:10)
+	  !lzg. r_wrk(jfe+2:jfe+12) = leaf%props(1:10)
+     r_wrk(jfe+2:jfe+11) = leaf%props(1:10)
 	  
 	  replace = 0
 	  ga      = leaf%g(1:nnf,1:nnx)

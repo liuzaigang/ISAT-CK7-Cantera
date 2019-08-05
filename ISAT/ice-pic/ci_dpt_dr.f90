@@ -359,7 +359,7 @@ subroutine temp_error_leaves( replace, nx, x, nf, nh, i_wrk, r_wrk, fa, ga, ha )
   xscale  = r_wrk(1:nx)
   fscale  = r_wrk(nx+1:nx+nf)
   etolsq  = r_wrk(nx+nf+1)
-  prop    = r_wrk(nx+nf+2:nx+nf+12)
+  prop    = r_wrk(nx+nf+2:nx+nf+11)! r_wrk(nx+nf+2:nx+nf+12) lzg 
 
   xx = x*xscale    ! unscale x
   ff = fa*fscale   ! unscale f
